@@ -1,0 +1,72 @@
+<div class="align-center">
+  <p class="no-tasks" *ngIf="activeTasks.length < 1">
+    Welcome! You don't have active tasks
+  </p>
+
+  <mat-selection-list color="primary" [multiple]="false">
+    <mat-list-option
+      *ngFor="let activeTask of activeTasks"
+      (click)="onClickEditActiveTask(activeTask)"
+    >
+      <div *ngIf="editedTask !== activeTask">
+        {{ activeTask.name }}
+        <button
+          class="delete-button"
+          (click)="onClickDeleteActiveTask(activeTask)"
+          mat-mini-fab
+          color="accent"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+
+      <div *ngIf="editedTask === activeTask">
+        <form
+          #taskEditForm="ngForm"
+          (submit)="onClickFinishedEditActiveTask(activeTask, taskEditForm)"
+        >
+          <mat-form-field>
+            <div class="fieldwrapper">
+              <input
+                matInput
+                type="text"
+                name="taskName"
+                ngModel
+                [ngModel]="activeTask.name"
+              />
+              <button mat-raised-button color="primary">submit</button>
+            </div>
+          </mat-form-field>
+        </form>
+      </div>
+    </mat-list-option>
+  </mat-selection-list>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-description>
+        Deleted Tasks ({{ deletedTasks.length }})</mat-panel-description
+      >
+    </mat-expansion-panel-header>
+
+    <mat-selection-list color="accent" [multiple]="false">
+      <mat-list-option
+        *ngFor="let deletedTask of deletedTasks"
+        (click)="onClickDeletedTask(deletedTask)"
+        class="deleted-tasks"
+      >
+        <div>
+          {{ deletedTask.name }}
+          <button
+            class="delete-button"
+            (click)="onClickDeleteDeletedTask(deletedTask)"
+            mat-mini-fab
+            color="accent"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </mat-list-option>
+    </mat-selection-list>
+  </mat-expansion-panel>
+</div>

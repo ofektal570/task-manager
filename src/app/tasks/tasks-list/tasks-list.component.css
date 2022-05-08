@@ -1,0 +1,36 @@
+.align-center {
+  text-align: center;
+}
+
+.no-tasks {
+  margin-top: 20px;
+  font-size: large;
+  padding: 2%;
+  border-style: dotted;
+}
+
+.deleted-tasks {
+  text-decoration: line-through;
+}
+
+.delete-button {
+  display: absolute;
+  float: left;
+  margin-bottom: 0.25%;
+}
+
+.fieldwrapper {
+  white-space: nowrap;
+}
+
+.mat-icon {
+  height: 30px !important;
+  width: 20px !important;
+  font-size: 20px !important;
+}
+
+.mat-mini-fab {
+  height: 35px !important;
+  width: 30px !important;
+  font-size: 30px !important;
+}
